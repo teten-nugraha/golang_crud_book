@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  dbBookApiGo:
+    image: mysql:5.7
+    ports:
+      - "3300:3306"
+    environment:
+      MYSQL_DATABASE: 'bookapiuser'
+      MYSQL_USER: 'bookapiuser'
+      MYSQL_PASSWORD: 'bookapiuser'
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - dbBookApiGo-db:/var/lib/mysql
+  dbBookApiGoTest:
+    image: mysql:5.7
+    ports:
+      - "3301:3306"
+    environment:
+      MYSQL_DATABASE: 'bookapiuser_test'
+      MYSQL_USER: 'bookapiuser_test'
+      MYSQL_PASSWORD: 'bookapiuser_test'
+      MYSQL_ROOT_PASSWORD: 'password'
+    volumes:
+      - dbBookApiGo-db-test:/var/lib/mysql
+volumes:
+  dbBookApiGo-db:
+  dbBookApiGo-db-test:
